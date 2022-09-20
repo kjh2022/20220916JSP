@@ -55,7 +55,7 @@
 				</c:when>
 				<c:otherwise>
 					<li><a class="menuLink" href="memberLogout.do">Logout</a></li>
-					<li>${name}님 환영합니다.</li>
+					<li>${name}님환영합니다.</li>
 				</c:otherwise>
 			</c:choose>
 		</ul>

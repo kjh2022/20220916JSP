@@ -8,7 +8,6 @@
 </head>
 <body>
 	<div align="center">
-	<div><jsp:include page="../menu/menu.jsp" /></div>
 	<div><h1>Welcome to My WebSite</h1></div>
 	<div>
 		<img alt="sleeping dog" src="img/danbi.png">

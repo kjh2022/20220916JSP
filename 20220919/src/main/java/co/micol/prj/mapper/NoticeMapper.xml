@@ -16,8 +16,7 @@
 		FROM NOTICE
 		</selectKey>
 		INSERT INTO NOTICE
-		VALUES(#{noticeId}, #{noticeWriter}, #{noticeTitle}, #{noticeSubject},
-				#{noticeDate}, #{noticeAttech}, #{noticeAttechDir}, 0)
+		VALUES(#{noticeId}, #{noticeWriter}, #{noticeTitle}, #{noticeSubject}, #{noticeDate}, #{noticeAttech}, #{noticeAttechDir}, 0)
 	</insert>
 
 	<update id="noticeUpdate">

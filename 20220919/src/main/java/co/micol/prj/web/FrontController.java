@@ -16,6 +16,9 @@ import co.micol.prj.common.Command;
 import co.micol.prj.member.command.MemberLogin;
 import co.micol.prj.member.command.MemberLoginForm;
 import co.micol.prj.member.command.MemberLogout;
+import co.micol.prj.notice.command.NoticeDelete;
+import co.micol.prj.notice.command.NoticeEdit;
+import co.micol.prj.notice.command.NoticeEditForm;
 import co.micol.prj.notice.command.NoticeInsert;
 import co.micol.prj.notice.command.NoticeSelect;
 import co.micol.prj.notice.command.NoticeSelectList;
@@ -32,15 +35,18 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		// 명령 집단을 저장하는 곳
-		map.put("/main.do", new Main()); //첫 페이지
-		map.put("/noticeSelectList.do", new NoticeSelectList());//게시글 출력
+		map.put("/main.do", new Main()); // 첫 페이지
+		map.put("/noticeSelectList.do", new NoticeSelectList());// 게시글 출력
 		map.put("/noticeWriteForm.do", new NoticeWriteForm());
-		map.put("/noticeInsert.do", new NoticeInsert()); //글 작성
+		map.put("/noticeInsert.do", new NoticeInsert()); // 글 작성
 		map.put("/noticeSelect.do", new NoticeSelect()); //
-		map.put("/memberLoginForm.do", new MemberLoginForm()); //로그인 폼 호출
-		map.put("/memberLogin.do", new MemberLogin()); //로그인 처리
-		map.put("/memberLogout.do", new MemberLogout());//로그아웃 처리
-		
+		map.put("/noticeEditForm.do", new NoticeEditForm()); // 자신이 쓴 글 수정
+		map.put("/noticeEdit.do", new NoticeEdit()); //
+		map.put("/noticeDelete.do", new NoticeDelete()); // 게시글 삭제
+		map.put("/memberLoginForm.do", new MemberLoginForm()); // 로그인 폼 호출
+		map.put("/memberLogin.do", new MemberLogin()); // 로그인 처리
+		map.put("/memberLogout.do", new MemberLogout());// 로그아웃 처리
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -55,18 +61,21 @@ public class FrontController extends HttpServlet {
 		String viewPage = command.esec(request, response);
 
 		if (!viewPage.endsWith(".do")) {
-			if (viewPage.startsWith("ajax:")) {
+			if (viewPage.startsWith("ajax:")) { // ajax사용할때 
 				response.setContentType("text/html; charset=UTF-8");
 				response.getWriter().append(viewPage.substring(5));
 				return;
 			} else {
-				viewPage = "/WEB-INF/views/" + viewPage + ".jsp";
-				
-				RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-				dispatcher.forward(request, response);
+				if (viewPage.startsWith("no:")) { //tiles를 적용 안할때
+					viewPage = "/WEB-INF/views/" + viewPage.substring(3) + ".jsp";
+				} else {
+					viewPage = viewPage + ".tiles"; //tiles layout사용할때
+					RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+					dispatcher.forward(request, response);
+				}
 			}
 		} else {
-			response.sendRedirect(viewPage);
+			response.sendRedirect(viewPage); //.do가 반환될떼
 		}
 	}
 
