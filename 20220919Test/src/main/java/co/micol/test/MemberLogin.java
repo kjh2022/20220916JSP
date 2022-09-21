@@ -23,8 +23,6 @@ public class MemberLogin implements Command {
 		if (vo != null) {
 			// 세션 처리
 			session.setAttribute("id", vo.getMemberId()); // 세션 객체에 아이디 담음
-			session.setAttribute("author", vo.getMemberAuthor()); // 권한 담음
-			session.setAttribute("name", vo.getMemberName()); // 이름 담음
 			
 			request.setAttribute("message", vo.getMemberName() + "님 환영합니다.");
 		} else {
