@@ -11,14 +11,14 @@ public class DataSource {
 
 	private DataSource() {
 	}
-	
+
 	public static SqlSessionFactory getInstance() { // Mybatis연결
-		String resource="config/mybatis-config.xml";
+		String resource = "config/mybatis-config.xml";
 		InputStream inputStream;
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return sqlSessionFactory;
