@@ -10,7 +10,7 @@
 	<div align="center">
 	<div><h1>Welcome to My WebSite</h1></div>
 	<div>
-		<img alt="sleeping dog" src="img/danbi.png">
+		<img src=”http://localhost/fileUpload/” +"danbi.png">
 	</div>
 	</div>
 </body>

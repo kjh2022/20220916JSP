@@ -1,6 +1,7 @@
 package co.micol.prj.notice.serviceImpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -47,6 +48,12 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public List<NoticeVO> noticeSearchList(String key, String val) {
 		return map.noticeSearchList(key, val);
+	}
+
+	@Override
+	public List<Map<String, Object>> noticeJoinMember() {
+		// TODO Auto-generated method stub
+		return map.noticeJoinMember();
 	}
 
 }

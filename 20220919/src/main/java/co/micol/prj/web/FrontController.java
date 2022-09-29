@@ -20,6 +20,7 @@ import co.micol.prj.notice.command.NoticeDelete;
 import co.micol.prj.notice.command.NoticeEdit;
 import co.micol.prj.notice.command.NoticeEditForm;
 import co.micol.prj.notice.command.NoticeInsert;
+import co.micol.prj.notice.command.NoticeJoinMember;
 import co.micol.prj.notice.command.NoticeSelect;
 import co.micol.prj.notice.command.NoticeSelectList;
 import co.micol.prj.notice.command.NoticeWriteForm;
@@ -43,6 +44,7 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeEditForm.do", new NoticeEditForm()); // 자신이 쓴 글 수정
 		map.put("/noticeEdit.do", new NoticeEdit()); //
 		map.put("/noticeDelete.do", new NoticeDelete()); // 게시글 삭제
+		map.put("noticeJoinMember.do", new NoticeJoinMember());;
 		map.put("/memberLoginForm.do", new MemberLoginForm()); // 로그인 폼 호출
 		map.put("/memberLogin.do", new MemberLogin()); // 로그인 처리
 		map.put("/memberLogout.do", new MemberLogout());// 로그아웃 처리

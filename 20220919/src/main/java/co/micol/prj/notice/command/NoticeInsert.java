@@ -37,7 +37,8 @@ public class NoticeInsert implements Command {
 			vo.setNoticeTitle(multi.getParameter("noticeTitle"));
 			vo.setNoticeSubject(multi.getParameter("noticeSubject"));
 			vo.setNoticeAttech(originalFileName);
-			vo.setNoticeAttechDir(saveFolder + File.separator + filename);
+			vo.setNoticeAttechDir(filename); //물리적 파일명
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
